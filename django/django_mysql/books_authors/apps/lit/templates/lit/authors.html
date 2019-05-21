@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Books/Authors</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lit/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'lit/bootstrap.min.css' %}">
+    <script src="{% static 'lit/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'lit/bootstrap.min.js' %}"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="form">
+            <h1>Add an Author</h1><form id="myform" action="/addauthor" method="POST" name="addauthor">
+            {% csrf_token %}
+            <p>First Name</p><input type="text" name="firstname">
+            <p>Last Name</p><input type="text" name="lastname">
+            <p>Notes</p><textarea form="myform" rows="12" name='notes'></textarea>
+        <p><input type="submit" value="Add"></p></form>
+        </div>
+    <div id="table">
+        <table class="table table-bordered table-striped">
+            <thead>
+              <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Action</th>
+            </thead>
+            <tbody>
+                {% for author in authors %}
+                <tr>
+                    <td>{{author.id}}</td>
+                    <td>{{author.first_name}} {{author.last_name}}</td>
+                    <td><a href="/authors/{{ author.id }}">View</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

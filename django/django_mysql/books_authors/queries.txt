@@ -1,0 +1,41 @@
+ja = author.objects.create(first_name="Jane", last_name="Austen")
+ed = author.objects.create(first_name="Emily", last_name="Dickinson")
+fd = author.objects.create(first_name="Fyodor", last_name="Dostoevksy")
+ws = author.objects.create(first_name="William", last_name="Shakespeare")
+lt = author.objects.create(first_name="Lau", last_name="Tzu")
+ja
+ed
+fd
+ws
+lt
+
+cs = book.objects.create(title="C Sharp", desc="empty")
+j = book.objects.create(title="Java", desc="empty")
+py =book.objects.create(title="Python", desc="empty")
+php = book.objects.create(title="PHP", desc="empty")
+ruby = book.objects.create(title="Ruby", desc="empty")
+
+cs = book.objects.get(title="C Sharp")
+cs.Title="C#"
+cs.save()
+
+author.objects.get(id=9).first_name = "Bill"
+author.objects.get(id=9).save()
+
+book.objects.get(id=1).authors.add(author.objects.get(id=6))
+book.objects.get(id=2).authors.add(author.objects.get(id=6))
+
+check:
+book.objects.get(id=1).authors.all().values()
+author.objects.get(id=6).book.all()
+
+#shouldve named it related_name="books"
+
+
+author.objects.get(id=10).book.add(book.objects.get(id=1))
+author.objects.get(id=10).book.add(book.objects.get(id=2))
+author.objects.get(id=10).book.add(book.objects.get(id=3))
+author.objects.get(id=10).book.add(book.objects.get(id=4))
+author.objects.get(id=10).book.add(book.objects.get(id=5))
+
+author.objects.get(id=6).book.remove(book.objects.get(id=3))

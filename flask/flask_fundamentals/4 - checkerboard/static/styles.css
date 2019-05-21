@@ -1,0 +1,22 @@
+#wrapper {
+    height: 800px;
+    width: 400px;
+    margin: 0px auto;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.red
+{
+    height: 50px;
+    width: 50px;
+    background-color: red;
+}
+
+.black
+{
+    height: 50px;
+    width: 50px;
+    background-color: black;
+}

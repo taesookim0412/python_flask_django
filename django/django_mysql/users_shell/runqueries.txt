@@ -1,0 +1,15 @@
+users.objects.create(first_name="c", last_name="d", email_address="dfds@afsd.com", age=18)
+users.objects.all()
+.first()
+.last()
+c = users.objects.get(id=15)
+c.first_name = "Changed"
+c.save()
+c.__dict__
+
+
+d = users.objects.get(id=16)
+d.delete()
+e = users.objects.filter(first_name="Changed!!")
+e
+users.objects.all().order_by("-first_name").values()

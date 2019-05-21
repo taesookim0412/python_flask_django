@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+<div id="wrapper">
+    {% set lastcolor = red %}
+    {% for num in range(0, rows): %}
+        {% for color in colors %}
+            {% if color != lastcolor %}
+                {% set lastcolor = color %}
+            {% endif %}
+        {% endfor %}
+        {% for x in range(0, 4): %}
+            {% for color in colors %}
+                {% if color != lastcolor %}
+                    {% set currentcolor = color %}
+                    {% set lastcolor = currentcolor %}
+                    <div class={{ currentcolor }}></div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+</div>  

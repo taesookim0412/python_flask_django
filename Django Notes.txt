@@ -1,0 +1,70 @@
+(djangoPy3Env) > cd python_stack/django/django_intro
+(djangoPy3Env) django_intro> django-admin startproject your_project_name_here
+
+(djangoPy3Env) django_intro> cd your_project_name_here
+(djangoPy3Env) your_project_name_here> python manage.py runserver
+
+(djangoPy3Env) your_project_name_here> cd apps
+(djangoPy3Env) apps> python ../manage.py startapp your_app_name_here
+
+(djangoPy3Env) apps> cd app_name
+(djangoPy3Env) your_app_name_here> touch urls.py	// Mac users
+                    OR
+(djangoPy3Env) your_app_name_here> nul>urls.py	// Windows command prompt users; ignore Access Denied warning
+
+  INSTALLED_APPS = [
+       'apps.your_app_name_here', # added this line. Don't forget the comma!!
+       'django.contrib.admin',
+       'django.contrib.auth',
+       'django.contrib.contenttypes',
+       'django.contrib.sessions',
+       'django.contrib.messages',
+       'django.contrib.staticfiles',
+   ]    # the trailing comma after the last item in a list, tuple, or dictionary is commonly accepted in Python
+
+
+urlpatterns = [
+        url(r'^bears$', views.one_method),                        # would only match localhost:8000/bears
+        url(r'^bears/(?P<my_val>\d+)$', views.another_method),    # would match localhost:8000/bears/23
+        url(r'^bears/(?P<name>\w+)/poke$', views.yet_another),    # would match localhost:8000/bears/pooh/poke
+    	url(r'^(?P<id>[0-9]+)/(?P<color>\w+)$', views.one_more),  # would match localhost:8000/17/brown
+]
+
+def one_method(request):                # no values passed via URL
+    pass                                
+    
+def another_method(request, my_val):	# my_val would be a number from the URL
+    pass                                # given the example above, my_val would be 23
+    
+def yet_another(request, name):	        # name would be a string from the URL
+    pass                                # given the example above, name would be 'pooh'
+    
+def one_more(request, id, color): 	# id would be a number, and color a string from the URL
+    pass                                # given the example above, id would be 17 and color would be 'brown'
+
+
+from django.shortcuts import render
+    
+def index(request):
+    context = {
+    	"name": "Noelle",
+    	"favorite_color": "turquoise",
+    	"pets": ["Bruce", "Fitz", "Georgie"]
+    }
+    return render(request, "app_name/index.html", context)
+
+
+
+
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Index</title>
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'app_name/css/style.css' %}">    
+      <script src="{% static 'app_name/js/script.js' %}"></script>
+    </head>
+    <body>
+    	<img src="{% static 'app_name/images/image.jpg' %}" />
+    </body>

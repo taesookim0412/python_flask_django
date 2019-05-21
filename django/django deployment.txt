@@ -1,0 +1,40 @@
+pip freeze > requirements.txt
+
+Server Configuration
+Objectives:
+Install the necessary programs on our AWS instance
+Now we are going to set up our remote server for deployment. Our server is nothing more than a small allocated space on someone else’s larger computer (in this case, the big computer belongs to Amazon!). That space has an installed operating system, just like your computer. In this case, we are using a distribution of Linux called Ubuntu, version 16.04.
+
+Although we have linux, our new computer is otherwise empty. Let’s change that so we can start building a server capable of providing content that the rest of the world can access. Let's check for updates first.
+
+ubuntu@54.162.31.253:~$ sudo apt-get update
+This distribution has Python 3.5 by default. Let's get Python 3.6 installed.
+
+ubuntu@54.162.31.253:~$ sudo add-apt-repository ppa:jonathonf/python-3.6	[press ENTER when prompted]
+ubuntu@54.162.31.253:~$ sudo apt-get update
+ubuntu@54.162.31.253:~$ sudo apt-get install python3.6 -y
+Now let's install some other programs that we'll need.
+
+ubuntu@54.162.31.253:~$ sudo apt-get install python-pip python3.6-dev nginx git -y
+Now that we've installed some packages using apt-get, let's run update again to make sure apt-get knows we've done those installations.
+
+ubuntu@54.162.31.253:~$ sudo apt-get update
+Let's use our newly installed pip to install the virtual environment program on our new computer.
+
+ubuntu@54.162.31.253:~$ sudo pip install virtualenv
+Now clone your project from GitHub onto this server. Get the url from GitHub and type the command, with your url:
+
+ubuntu@54.162.31.253:~$ git clone https://github.com/your_username_here/your_repo_name_here
+Type ls to ensure your code is now available on your server.
+
+Navigate into this new project folder
+
+ubuntu@54.162.31.253:~$ cd myRepoName
+CHECK: run ls in your terminal. If you don't see manage.py as one of the files, STOP. Review the setting up GitHub/Git pieces from earlier.
+If everything looks good, let's make a virtual environment and activate it.
+
+ubuntu@54.162.31.253:~/myRepoName$ virtualenv venv --python=python3.6
+ubuntu@54.162.31.253:~/myRepoName$ source venv/bin/activate
+(venv) ubuntu@54.162.31.253:~/myRepoName$ pip install -r requirements.txt
+(venv) ubuntu@54.162.31.253:~/myRepoName$ pip install django bcrypt django-extensions
+(venv) ubuntu@54.162.31.253:~/myRepoName$ pip install gunicorn

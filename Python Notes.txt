@@ -1,0 +1,159 @@
+pip install virtualenv
+virtualenv py3Env
+py3Env\Scripts\activate
+
+print(f"My name is {first_name} {last_name} and I am {age} years old.")
+
+print("My name is {} {} and I am {} years old.".format(first_name, last_name, age))
+
+print("My name is %s and I'm %d" % (name, age))		# or with variables
+
+x = "hello world"
+print(x.title())
+# output:
+"Hello World"
+c
+
+string.upper(): returns a copy of the string with all the characters in uppercase.
+string.lower(): returns a copy of the string with all the characters in lowercase.
+string.count(substring): returns number of occurrences of substring in string.
+string.split(char): returns a list of values where string is split at the given character. Without a parameter the default split is at every space.
+string.find(substring): returns the index of the start of the first occurrence of substring within string.
+string.isalnum(): returns boolean depending on whether the string's length is > 0 and all characters are alphanumeric (letters and numbers only). Strings that include spaces and punctuation will return False for this method. Similar methods include .isalpha(), .isdigit(), .islower(), .isupper(), and so on. All return booleans.
+string.join(list): returns a string that is all strings within our set (in this case a list) concatenated.
+string.endswith(substring): returns a boolean based upon whether the last characters of string match substring.
+
+
+Immutable (Can't be modified)
+Tuples = ('Two', 2, False)
+
+Lists = ['Like', 'An', 'Array']
+
+new_person = {'name': 'John', 'age': 38, 'weight': 160.2, 'has_glasses': False}
+new_person['name'] = 'Jack'
+Changes name to Jack.
+
+print(type(2.63))		# output: <class 'float'>
+print(type(new_person))		# output: <class 'dict'>
+
+print(len(new_person))		# output: 4 (the number of key-value pairs)
+print(len('Coding Dojo'))	# output: 11
+
+print("Hello" + 42)			# output: TypeError
+print("Hello" + str(42))		# output: Hello 42
+
+total = 35
+user_val = "26"
+total = total + user_val		# output: TypeError
+total = total + int(user_val)		# total will be 61
+
+
+// javascript code below!  
+var arr = [1,3,5,7];
+var temp = arr[0];
+arr[0] = arr[1];
+arr[1] = temp;
+If this code looks like a lot of work for a simple swap, good news! Python provides a one-liner way to swap:
+
+# python code below!
+arr = [1,3,5,7]
+arr[0], arr[1] = arr[1], arr[0]
+
+
+Activate virutal server:
+C:\Users\terry\Desktop\OneDrive\CD\11 - Python\my_environments\py3Env\Scripts\activate
+
+####################################################flask:
+
+
+
+python hello.py
+
+# import statements, maybe some other routes
+    
+@app.route('/success')
+def success():
+  return "success"
+    
+    # app.run(debug=True) should be the very last statement! 
+
+
+@app.route('/hello/<name>') # for a route '/hello/____' anything after '/hello/' gets passed as a variable 'name'
+def hello(name):
+    print(name)
+    return "Hello, " + name
+
+    @app.route('/users/<username>/<id>') # for a route '/users/____/____', two parameters in the url get passed as username and id
+def show_user_profile(username, id):
+    print(username)
+    print(id)
+    return "username: " + username + ", id: " + id
+
+
+templates folder
+
+from flask import Flask, render_template  # added render_template!
+app = Flask(__name__)                     
+    
+@app.route('/')                           
+def hello_world():
+    # Instead of returning a string, 
+    # we'll return the result of the render_template method, passing in the name of our HTML file
+    return render_template('index.html')  
+    
+if __name__=="__main__":
+    app.run(debug=True)  
+
+from flask import Flask, render_template
+app = Flask(__name__)
+@app.route('/')
+def index():
+    return render_template("index.html", phrase="hello", times=5)	# notice the 2 new named arguments!
+if __name__=="__main__":
+    app.run(debug=True)
+
+    {{ some variable }}
+{% some expression %}
+Let's update our index.html file:
+
+hello_flask/templates/index.html
+<h3>My Flask Template</h3>
+<p>Phrase: {{ phrase }}</p>
+<p>Times: {{ times }}</p>
+      
+{% for x in range(0,times): %}
+    <p>{{ phrase }}</p>
+{% endfor %}
+      
+{% if phrase == "hello" %}
+  <p>The phrase says hello</p>
+{% endif %}
+
+<!-- based on the folder structure on the right -->
+<!-- linking a css style sheet -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style.css') }}">
+<!-- linking a javascript file -->
+<script type="text/javascript" src="{{ url_for('static', filename='my_script.js') }}"></script>
+<!-- linking an image -->
+
+
+<h1>Index Page</h1>
+<h3>Create a User</h3>
+    <form action='/users' method='post'>
+    Name: <input type='text' name='name'>
+    Email: <input type='text' name='email'>
+    <input type='submit' value='create user'>
+</form>
+
+from flask import Flask, render_template, request, redirect # added request
+            
+@app.route('/users', methods=['POST'copy])
+def create_user():
+    print("Got Post Info")
+    print(request.form)
+    name_from_form = request.form['name']
+    email_from_form = request.form['email']
+    return render_template("show.html", name_on_template=name_from_form, email_on_template=email_from_form)
+<img src="{{ url_for('static', filename='my_img.png') }}">
+
+ 

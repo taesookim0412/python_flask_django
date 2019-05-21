@@ -1,0 +1,133 @@
+#wrapper {
+    height: 2048px;
+    width: 100%;
+    background: rgb(24,24,24);
+    background: linear-gradient(180deg, rgba(24,24,24,1) 0%, rgba(18,18,18,1) 14%, rgba(10,10,10,1) 23%, rgba(9,7,9,1) 78%, rgba(9,9,9,1) 94%, rgba(0,0,0,1) 99%);
+    font-family: helvetica;
+}
+
+#infonav {
+    height: 13%;
+    width: 70%;
+    margin-left: 30%;
+}
+
+#categorynav {
+    height: 6%;
+    width: 48%;
+    margin-left: 26%;
+    margin-top: 7px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    border-bottom: 5px solid silver;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.categorybox {
+    height: 100%;
+    width: 20%;
+    padding-top: 10px;
+    font-size: 22px;
+    /* color: silver; */
+    color: rgba(75, 76, 134, 0.26);
+    /* border-bottom: 3px solid white; */
+    text-align: center;
+}
+
+
+#content {
+    display: inline-block;
+    vertical-align: top;
+    border:none;
+    width: 80%;
+    height: 81%;
+    overflow: scroll;
+}
+
+#leftcontent {
+    display: inline-block;
+    vertical-align: top;
+    width: 19%;
+    height: 81%;
+    background-color: silver;
+}
+
+#gallery {
+    margin-left: 42%;
+    height: 100%;
+    width: 58%;
+    display: flex;
+    flex-direction: column;
+}
+
+.gallerybox {
+    height: 35%;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.gallerybox:first-child {
+    margin-top: 0%;
+}
+
+.gallerytop {
+    width: 100%;
+    height: 25%;
+    background-color: silver;
+}
+
+.gallerybanner {
+    width: 100%;
+    height: 75%;
+    background-color: white;
+}
+
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    }
+    
+    ::-webkit-scrollbar-track {
+    width: 2px;
+    border: 1px dashed silver;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+    background: silver;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+    background: silver;  
+}
+
+@media only screen and (max-height: 2048px){
+    #wrapper {
+        height: 2048px;
+    }
+}
+
+@media only screen and (max-height: 1080px){
+    #wrapper {
+        height: 1080px;
+    }
+}
+
+@media only screen and (max-height: 1024px){
+    #wrapper {
+        height: 1024px;
+    }
+}
+
+@media only screen and (max-height: 980px){
+    #wrapper {
+        height: 960px;
+    }
+}
+
+@media only screen and (max-height: 900px){
+    #wrapper {
+        height: 900px;
+    }
+}

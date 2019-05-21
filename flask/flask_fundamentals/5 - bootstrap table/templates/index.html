@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css')}}">
+<script src="{{ url_for('static', filename='jquery-3.3.1min.js')}}"></script>
+<script src="{{ url_for('static', filename='bootstrap.min.js')}}"></script>
+
+<table class="table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Full Name</th>
+        </tr>
+    </thead>
+    <tbody>
+            {% for person in users %}
+            <tr>
+                <td>{{ person['first_name'] }}</td>
+                <td>{{ person['last_name'] }}</td>
+                <td>{{ person['first_name'] + " " + person['last_name'] }}</td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>

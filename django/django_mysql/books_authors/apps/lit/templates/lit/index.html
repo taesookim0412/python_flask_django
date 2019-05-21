@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Books/Authors</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lit/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'lit/bootstrap.min.css' %}">
+    <script src="{% static 'lit/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'lit/bootstrap.min.js' %}"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="form">
+            <h1>Add a Book</h1><form id="myform" action="/addbook" method="POST" name="addbook">
+            {% csrf_token %}
+            <p>Title</p><input type="text" name="title">
+            <p>Description</p><textarea form="myform" rows="12" name='desc'></textarea>
+        <p><input type="submit" value="Add"></p></form>
+        </div>
+    <div id="table">
+        <table class="table table-bordered table-striped">
+            <thead>
+              <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Action</th>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{book.id}}</td>
+                    <td>{{book.title}}</td>
+                    <td><a href="/books/{{ book.id }}">View</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
